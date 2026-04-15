@@ -1,0 +1,17 @@
+# requirements.txt — dependensi Python untuk Raspberry Pi
+# Install dengan: pip install -r requirements.txt
+
+requests>=2.31.0
+
+# ─── Sensor Libraries (aktifkan sesuai hardware) ───
+# Untuk DHT22/DHT11:
+# Adafruit-DHT
+
+# Untuk BME280 via I2C:
+# adafruit-circuitpython-bme280
+
+# Untuk sensor UV (SI1145):
+# adafruit-circuitpython-si1145
+
+# Untuk GPIO (sudah terinstal di Raspberry Pi OS):
+# RPi.GPIO

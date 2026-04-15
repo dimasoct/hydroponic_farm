@@ -23,12 +23,12 @@ class WaterEarlyWarningWidget extends BaseWidget
 
         $warning = $latest?->early_warning ?? 'Belum ada data prediksi';
 
-        $color = match(true) {
-            str_contains(strtolower($warning), 'baik')    => 'success',
-            str_contains(strtolower($warning), 'normal')  => 'info',
+        $color = match (true) {
+            str_contains(strtolower($warning), 'baik') => 'success',
+            str_contains(strtolower($warning), 'normal') => 'info',
             str_contains(strtolower($warning), 'waspada') => 'warning',
-            str_contains(strtolower($warning), 'kritis')  => 'danger',
-            default                                        => 'gray',
+            str_contains(strtolower($warning), 'kritis') => 'danger',
+            default => 'gray',
         };
 
         return [

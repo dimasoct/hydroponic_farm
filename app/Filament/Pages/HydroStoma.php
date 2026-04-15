@@ -5,18 +5,22 @@ namespace App\Filament\Pages;
 use App\Models\StomataClassification;
 use Filament\Pages\Page;
 use Filament\Tables;
-use Filament\Tables\Table;
-use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Concerns\InteractsWithTable;
+use Filament\Tables\Contracts\HasTable;
+use Filament\Tables\Table;
 
 class HydroStoma extends Page implements HasTable
 {
     use InteractsWithTable;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-eye';
-    protected static string|\UnitEnum|null $navigationGroup = 'HydroStoma';
+    protected static \BackedEnum|string|null $navigationIcon = 'heroicon-o-eye';
+
+    protected static \UnitEnum|string|null $navigationGroup = 'HydroStoma';
+
     protected static ?string $navigationLabel = 'HydroStoma';
+
     protected static ?string $title = 'HydroStoma — Klasifikasi Kondisi Stomata';
+
     protected static bool $shouldRegisterNavigation = false;
 
     protected string $view = 'filament.pages.hydro-stoma';

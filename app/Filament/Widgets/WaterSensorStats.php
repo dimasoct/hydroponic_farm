@@ -19,51 +19,51 @@ class WaterSensorStats extends BaseWidget
     {
         $history = SensorDataWater::latest('updated_at')->take(15)->get()->reverse();
 
-        $latest   = $history->last();
+        $latest = $history->last();
         $previous = $history->count() > 1 ? $history->slice(-2, 1)->first() : null;
 
-        $phs  = $history->pluck('ph')->toArray();
+        $phs = $history->pluck('ph')->toArray();
         $tdss = $history->pluck('tds')->toArray();
-        $dos  = $history->pluck('do')->toArray();
+        $dos = $history->pluck('do')->toArray();
 
-        $phTrend  = $previous && $latest ? round($latest->ph  - $previous->ph,  2) : 0;
+        $phTrend = $previous && $latest ? round($latest->ph - $previous->ph, 2) : 0;
         $tdsTrend = $previous && $latest ? round($latest->tds - $previous->tds, 2) : 0;
-        $doTrend  = $previous && $latest ? round($latest->do  - $previous->do,  2) : 0;
+        $doTrend = $previous && $latest ? round($latest->do - $previous->do, 2) : 0;
 
-        $phColor = match(true) {
+        $phColor = match (true) {
             $latest && $latest->ph >= 5.5 && $latest->ph <= 7.0 => 'success',
-            $latest && ($latest->ph < 4 || $latest->ph > 8)     => 'danger',
-            default                                              => 'warning',
+            $latest && ($latest->ph < 4 || $latest->ph > 8) => 'danger',
+            default => 'warning',
         };
 
-        $tdsColor = match(true) {
+        $tdsColor = match (true) {
             $latest && $latest->tds >= 800 && $latest->tds <= 1500 => 'success',
             $latest && ($latest->tds < 400 || $latest->tds > 2000) => 'danger',
-            default                                                 => 'warning',
+            default => 'warning',
         };
 
-        $doColor = match(true) {
+        $doColor = match (true) {
             $latest && $latest->do >= 5 => 'success',
-            $latest && $latest->do < 3  => 'danger',
-            default                     => 'warning',
+            $latest && $latest->do < 3 => 'danger',
+            default => 'warning',
         };
 
         $warning = $latest?->early_warning ?? 'Belum ada data';
-        $ewColor = match(true) {
-            str_contains(strtolower($warning), 'baik')    => 'success',
-            str_contains(strtolower($warning), 'normal')  => 'info',
+        $ewColor = match (true) {
+            str_contains(strtolower($warning), 'baik') => 'success',
+            str_contains(strtolower($warning), 'normal') => 'info',
             str_contains(strtolower($warning), 'waspada') => 'warning',
-            str_contains(strtolower($warning), 'kritis')  => 'danger',
-            default                                        => 'gray',
+            str_contains(strtolower($warning), 'kritis') => 'danger',
+            default => 'gray',
         };
 
         $condition = $latest?->conditions ?? 'Belum ada data';
-        $conditionColor = match(strtolower($condition)) {
+        $conditionColor = match (strtolower($condition)) {
             'sangat baik' => 'success',
-            'baik'        => 'info',
-            'sedang'      => 'warning',
-            'buruk'       => 'danger',
-            default       => 'gray',
+            'baik' => 'info',
+            'sedang' => 'warning',
+            'buruk' => 'danger',
+            default => 'gray',
         };
 
         return [

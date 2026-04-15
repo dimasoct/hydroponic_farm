@@ -10,7 +10,7 @@ class SensorDataWaterForm
     public static function configure(Schema $schema): Schema
     {
         return $schema
-            ->components([
+            ->schema([
                 TextInput::make('ph')
                     ->numeric(),
                 TextInput::make('tds')

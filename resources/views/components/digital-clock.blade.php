@@ -1,13 +1,3 @@
-<?php
-
-use Livewire\Component;
-
-new class extends Component
-{
-    //
-};
-?>
-
 <div class="flex items-center mx-4" x-data="{
         time: '',
         init() {

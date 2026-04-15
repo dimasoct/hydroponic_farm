@@ -18,10 +18,14 @@ class SensorDataWaterResource extends Resource
 {
     protected static ?string $model = SensorDataWater::class;
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-beaker';
+    protected static \BackedEnum|string|null $navigationIcon = 'heroicon-o-beaker';
+
     protected static ?string $navigationLabel = 'Monitoring Water Sensor';
-    protected static string | \UnitEnum | null $navigationGroup = 'Hydroponic System';
+
+    protected static \UnitEnum|string|null $navigationGroup = 'Hydroponic System';
+
     protected static ?string $modelLabel = 'Water Sensor Data';
+
     protected static ?string $recordTitleAttribute = 'early_warning';
 
     public static function canCreate(): bool

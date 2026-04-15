@@ -2,23 +2,24 @@
 
 namespace App\Filament\Pages;
 
+use App\Filament\Widgets\HumidityChart;
+use App\Filament\Widgets\PressureChart;
+use App\Filament\Widgets\TemperatureChart;
+use App\Filament\Widgets\UvIndexChart;
 use App\Models\SensorData;
 use Filament\Pages\Page;
 use Filament\Tables;
-use Filament\Tables\Table;
-use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Concerns\InteractsWithTable;
-use App\Filament\Widgets\TemperatureChart;
-use App\Filament\Widgets\HumidityChart;
-use App\Filament\Widgets\PressureChart;
-use App\Filament\Widgets\UvIndexChart;
+use Filament\Tables\Contracts\HasTable;
+use Filament\Tables\Table;
 
 class History extends Page implements HasTable
 {
     use InteractsWithTable;
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-clock';
-    protected static string | \UnitEnum | null $navigationGroup = 'Hydroponic System';
+    protected static \BackedEnum|string|null $navigationIcon = 'heroicon-o-clock';
+
+    protected static \UnitEnum|string|null $navigationGroup = 'Hydroponic System';
 
     protected string $view = 'filament.pages.history';
 
